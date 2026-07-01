@@ -7,81 +7,90 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
 :root {
-  --bg:#080b0f;--s1:#0f1217;--s2:#161b23;--border:#1e2535;
-  --g:#00e5a0;--r:#ff4560;--y:#f5c518;--b:#4d9fff;
-  --dg:rgba(0,229,160,.10);--dr:rgba(255,69,96,.10);--dy:rgba(245,197,24,.10);--db:rgba(77,159,255,.10);
-  --text:#e8eaf0;--dim:#505870;--mid:#8892a4;
-  --mono:'IBM Plex Mono',monospace;--sans:'Noto Sans TC',sans-serif;
+  --bg:#080b0f; --s1:#0f1217; --s2:#161b23; --border:#1e2535;
+  --g:#00e5a0; --r:#ff4560; --y:#f5c518; --b:#4d9fff;
+  --dg:rgba(0,229,160,.10); --dr:rgba(255,69,96,.10); --dy:rgba(245,197,24,.10); --db:rgba(77,159,255,.10);
+  --text:#e8eaf0; --dim:#505870; --mid:#8892a4;
+  --mono:'IBM Plex Mono',monospace; --sans:'Noto Sans TC',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;padding:18px 14px 48px;max-width:900px;margin:0 auto}
 
+/* Header */
 .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.hdr-l .eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;margin-bottom:3px}
-.hdr-l h1{font-size:17px;font-weight:700;letter-spacing:-.03em}
+.eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;margin-bottom:3px}
+h1{font-size:17px;font-weight:700;letter-spacing:-.03em}
 .hdr-r{text-align:right}
 .hdr-date{font-family:var(--mono);font-size:11px;color:var(--b);margin-bottom:2px}
 .hdr-time{font-family:var(--mono);font-size:9px;color:var(--dim)}
 
+/* Tabs */
 .tabs{display:flex;gap:3px;margin-bottom:18px;background:var(--s1);padding:3px;border-radius:7px;border:1px solid var(--border)}
 .tab{flex:1;padding:7px 6px;background:transparent;border:none;border-radius:5px;color:var(--dim);font-family:var(--sans);font-size:11px;cursor:pointer;transition:all .15s;text-align:center;white-space:nowrap}
 .tab.active{background:var(--s2);color:var(--text);border:1px solid var(--border)}
-.panel{display:none}.panel.active{display:block}
+.panel{display:none}
+.panel.active{display:block}
 
+/* Section label */
 .sec{display:flex;align-items:center;gap:8px;margin:16px 0 10px}
 .sec span{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;white-space:nowrap}
 .sec::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* ── TradingView wrappers ── */
-.tv-wrap{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:10px}
-.tv-head{display:flex;align-items:center;justify-content:space-between;padding:9px 13px 8px;border-bottom:1px solid var(--border)}
-.tv-title{font-family:var(--mono);font-size:10px;color:var(--mid);letter-spacing:.06em}
-.tv-badge{font-family:var(--mono);font-size:8px;padding:2px 6px;border-radius:3px;letter-spacing:.04em}
-.tv-badge.live{background:var(--dg);color:var(--g);border:1px solid rgba(0,229,160,.2)}
-.tv-badge.warn{background:var(--dy);color:var(--y);border:1px solid rgba(245,197,24,.2)}
-.tv-badge.blue{background:var(--db);color:var(--b);border:1px solid rgba(77,159,255,.2)}
-.tv-inner{height:150px}
-.tv-inner.md{height:200px}
-.tv-inner.lg{height:420px}
-.tv-inner.xl{height:520px}
-
-/* ── Grid ── */
+/* Grids */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 
-/* ── Ticker tape wrap ── */
-.ticker-wrap{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px}
+/* TradingView wrapper */
+.tv-wrap{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:10px}
+.tv-head{display:flex;align-items:center;justify-content:space-between;padding:9px 13px 8px;border-bottom:1px solid var(--border)}
+.tv-title{font-family:var(--mono);font-size:10px;color:var(--mid);letter-spacing:.06em}
+.badge{font-family:var(--mono);font-size:8px;padding:2px 6px;border-radius:3px;letter-spacing:.04em}
+.badge-g{background:var(--dg);color:var(--g);border:1px solid rgba(0,229,160,.2)}
+.badge-y{background:var(--dy);color:var(--y);border:1px solid rgba(245,197,24,.2)}
+.badge-b{background:var(--db);color:var(--b);border:1px solid rgba(77,159,255,.2)}
+.tv-sm{height:150px}
+.tv-md{height:220px}
+.tv-lg{height:480px}
 
-/* ── Chart period switcher ── */
-.chart-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.chart-title{font-family:var(--mono);font-size:11px;color:var(--mid)}
-.period-btns{display:flex;gap:4px}
-.period-btn{padding:5px 10px;background:var(--s1);border:1px solid var(--border);border-radius:5px;color:var(--dim);font-family:var(--mono);font-size:10px;cursor:pointer;transition:all .15s}
-.period-btn.active{background:var(--s2);color:var(--b);border-color:rgba(77,159,255,.4)}
+/* Ticker tape */
+.tape-wrap{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px}
 
-/* ── Alert strip ── */
-.alert{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--y);border-radius:8px;padding:10px 13px;margin-bottom:10px;display:none;gap:8px;align-items:flex-start}
-.alert.show{display:flex}
-.alert.red{border-left-color:var(--r)}
-.alert.green{border-left-color:var(--g)}.alert.blue{border-left-color:var(--b)}
+/* Taiwan link cards */
+.tw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.tw-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.tw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g);opacity:.5}
+.tw-card:hover{border-color:rgba(0,229,160,.4);background:var(--s2)}
+.tw-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.tw-card-name{font-size:12px;font-weight:500;color:var(--text)}
+.tw-code{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--g);letter-spacing:-.02em;margin-bottom:7px;line-height:1}
+.tw-desc{font-size:10px;color:var(--dim);line-height:1.5;border-top:1px solid var(--border);padding-top:7px}
+
+/* Alert */
+.alert{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--y);border-radius:8px;padding:10px 13px;margin-bottom:10px;display:flex;gap:8px;align-items:flex-start}
+.alert-b{border-left-color:var(--b)}
+.alert-g{border-left-color:var(--g)}
 .alert-ico{font-size:13px;flex-shrink:0;margin-top:1px}
 .alert-txt{font-size:11px;color:var(--mid);line-height:1.65}
 .alert-txt strong{color:var(--text)}
 
-/* ── Yahoo iframe panel ── */
-.yahoo-wrap{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:10px}
-.yahoo-head{display:flex;align-items:center;justify-content:space-between;padding:9px 13px 8px;border-bottom:1px solid var(--border)}
-.yahoo-inner{height:160px;position:relative}
-.yahoo-inner iframe{width:100%;height:100%;border:none;display:block}
-.yahoo-note{font-family:var(--mono);font-size:9px;color:var(--dim);padding:6px 13px;border-top:1px solid var(--border)}
+/* Chart controls */
+.chart-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.chart-bar-title{font-family:var(--mono);font-size:10px;color:var(--mid)}
+.btn-row{display:flex;gap:4px;flex-wrap:wrap}
+.ctrl-btn{padding:5px 10px;background:var(--s1);border:1px solid var(--border);border-radius:5px;color:var(--dim);font-family:var(--mono);font-size:10px;cursor:pointer;transition:all .15s;white-space:nowrap}
+.ctrl-btn.active{background:var(--s2);color:var(--b);border-color:rgba(77,159,255,.4)}
+.ctrl-btn:hover{color:var(--text)}
 
-/* ── Framework ── */
+/* Framework */
 .fw{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:8px}
 .fw-hd{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;cursor:pointer;user-select:none}
 .fw-hd:hover{background:var(--s2)}
 .fw-l{display:flex;align-items:center;gap:9px}
 .fw-ico{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-.fw-ico.b{background:var(--db)}.fw-ico.g{background:var(--dg)}.fw-ico.y{background:var(--dy)}.fw-ico.r{background:var(--dr)}
+.fw-ico-b{background:var(--db)}
+.fw-ico-g{background:var(--dg)}
+.fw-ico-y{background:var(--dy)}
+.fw-ico-r{background:var(--dr)}
 .fw-title{font-size:12px;font-weight:500;margin-bottom:1px}
 .fw-sub{font-size:9px;color:var(--dim);font-family:var(--mono)}
 .fw-tog{font-size:15px;color:var(--dim);transition:transform .2s;flex-shrink:0}
@@ -91,117 +100,108 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .fw-bd p{font-size:11px;color:var(--mid);line-height:1.75;margin-bottom:7px}
 .fw-bd p:last-child{margin-bottom:0}
 .bdg{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:3px;font-family:var(--mono);font-size:8px;letter-spacing:.05em;margin-bottom:7px}
-.bdg.a{background:var(--dg);color:var(--g);border:1px solid rgba(0,229,160,.2)}
-.bdg.w{background:var(--dy);color:var(--y);border:1px solid rgba(245,197,24,.2)}
-.bdg.r{background:var(--dr);color:var(--r);border:1px solid rgba(255,69,96,.2)}
+.bdg-g{background:var(--dg);color:var(--g);border:1px solid rgba(0,229,160,.2)}
+.bdg-y{background:var(--dy);color:var(--y);border:1px solid rgba(245,197,24,.2)}
+.bdg-r{background:var(--dr);color:var(--r);border:1px solid rgba(255,69,96,.2)}
 
-/* ── Taiwan quick-link cards ── */
-.tw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.tw-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:14px;text-decoration:none;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
-.tw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g);opacity:.6}
-.tw-card:hover{border-color:rgba(0,229,160,.35);background:var(--s2)}
-.tw-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.tw-card-name{font-size:12px;font-weight:500;color:var(--text)}
-.tw-card-code{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--g);letter-spacing:-.02em;margin-bottom:6px;line-height:1}
-.tw-card-desc{font-size:10px;color:var(--dim);line-height:1.5;border-top:1px solid var(--border);padding-top:7px;margin-top:4px}
-
-@keyframes spin{to{transform:rotate(360deg)}}
-.spinner{display:inline-block;width:10px;height:10px;border:2px solid rgba(77,159,255,.3);border-top-color:var(--b);border-radius:50%;animation:spin .7s linear infinite}
-
+/* Footer */
 .footer{margin-top:24px;padding-top:12px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--dim);text-align:center;letter-spacing:.05em;line-height:1.8}
 
 @media(max-width:520px){
-  .g2,.g3{grid-template-columns:1fr 1fr}
-  .tv-inner.lg{height:320px}
-  .tv-inner.xl{height:400px}
+  .g2,.g3,.tw-grid{grid-template-columns:1fr 1fr}
+  .tv-lg{height:360px}
 }
 </style>
 </head>
 <body>
 
 <div class="hdr">
-  <div class="hdr-l">
+  <div>
     <div class="eyebrow">台股 AI 供應鏈</div>
     <h1>市場晨報</h1>
   </div>
   <div class="hdr-r">
     <div class="hdr-date" id="hdrDate"></div>
-    <div class="hdr-time" id="hdrTime">TradingView · 即時</div>
+    <div class="hdr-time">TradingView · 即時</div>
   </div>
 </div>
 
 <div class="tabs">
   <button class="tab active" onclick="switchTab('daily')">⚡ 每日速報</button>
   <button class="tab" onclick="switchTab('chart')">📈 走勢圖</button>
-  <button class="tab" onclick="switchTab('weekly')">🧭 分析框架</button>
+  <button class="tab" onclick="switchTab('fw')">🧭 分析框架</button>
 </div>
 
-<!-- ══════════════════════════════
-     TAB 1｜每日速報
-══════════════════════════════ -->
+<!-- ══════════════════ TAB 1｜每日速報 ══════════════════ -->
 <div class="panel active" id="panel-daily">
 
-  <!-- Ticker tape -->
-  <div class="ticker-wrap">
+  <div class="tape-wrap">
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {"symbols":[
-        {"proName":"NASDAQ:SOX","title":"費城半導體"},
-        {"proName":"CME_MINI:NQ1!","title":"那指期貨"},
-        {"proName":"NASDAQ:NDX","title":"那斯達克100"},
-        {"proName":"NYSE:TSM","title":"台積電ADR"},
-        {"proName":"NYSE:EWT","title":"台股ETF(EWT)"},
-        {"proName":"SP:SPX","title":"S&P500"}
-      ],"showSymbolLogo":false,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"zh_TW"}
+      {
+        "symbols": [
+          {"proName":"NASDAQ:SOX","title":"費城半導體"},
+          {"proName":"CME_MINI:NQ1!","title":"那指期貨"},
+          {"proName":"NASDAQ:NDX","title":"那斯達克100"},
+          {"proName":"NYSE:TSM","title":"台積電ADR"},
+          {"proName":"NYSE:EWT","title":"台股ETF"},
+          {"proName":"SP:SPX","title":"S&P500"}
+        ],
+        "showSymbolLogo": false,
+        "isTransparent": true,
+        "displayMode": "adaptive",
+        "colorTheme": "dark",
+        "locale": "zh_TW"
+      }
       </script>
     </div>
   </div>
 
-  <!-- 台股：快速連結卡片 -->
   <div class="sec"><span>台股大盤（點擊開新分頁）</span></div>
   <div class="tw-grid">
     <a class="tw-card" href="https://finance.yahoo.com/quote/%5ETWII/chart/" target="_blank">
       <div class="tw-card-top">
         <div class="tw-card-name">台灣加權指數</div>
-        <div class="tv-badge live">↗ 開啟圖表</div>
+        <div class="badge badge-g">↗ Yahoo</div>
       </div>
-      <div class="tw-card-code">^TWII</div>
-      <div class="tw-card-desc">Yahoo Finance · 支援週線／月線／年線切換</div>
+      <div class="tw-code">^TWII</div>
+      <div class="tw-desc">Yahoo Finance 圖表 · 支援週線／月線／年線</div>
     </a>
     <a class="tw-card" href="https://finance.yahoo.com/quote/%5ETPEX/chart/" target="_blank">
       <div class="tw-card-top">
         <div class="tw-card-name">台灣櫃買指數</div>
-        <div class="tv-badge live">↗ 開啟圖表</div>
+        <div class="badge badge-g">↗ Yahoo</div>
       </div>
-      <div class="tw-card-code">^TPEX</div>
-      <div class="tw-card-desc">Yahoo Finance · 中小型股走勢參考</div>
+      <div class="tw-code">^TPEX</div>
+      <div class="tw-desc">中小型股走勢 · 觀察與加權的背離</div>
     </a>
     <a class="tw-card" href="https://finance.yahoo.com/quote/2330.TW/chart/" target="_blank">
       <div class="tw-card-top">
         <div class="tw-card-name">台積電 2330</div>
-        <div class="tv-badge blue">↗ 開啟圖表</div>
+        <div class="badge badge-b">↗ Yahoo</div>
       </div>
-      <div class="tw-card-code">2330.TW</div>
-      <div class="tw-card-desc">本地掛牌股價，對照 ADR 走勢</div>
+      <div class="tw-code">2330.TW</div>
+      <div class="tw-desc">本地掛牌股價 · 對照 ADR 走勢</div>
     </a>
     <a class="tw-card" href="https://finance.yahoo.com/quote/0050.TW/chart/" target="_blank">
       <div class="tw-card-top">
         <div class="tw-card-name">元大台灣 50</div>
-        <div class="tv-badge blue">↗ 開啟圖表</div>
+        <div class="badge badge-b">↗ Yahoo</div>
       </div>
-      <div class="tw-card-code">0050.TW</div>
-      <div class="tw-card-desc">ETF 定期定額主力標的，觀察資金動向</div>
+      <div class="tw-code">0050.TW</div>
+      <div class="tw-desc">ETF 定期定額主力 · 觀察資金動向</div>
     </a>
   </div>
 
-  <!-- 美股：TradingView -->
   <div class="sec"><span>美股關鍵指標（TradingView）</span></div>
-
   <div class="g2">
     <div class="tv-wrap">
-      <div class="tv-head"><div class="tv-title">費城半導體 SOX</div><div class="tv-badge warn">領先指標</div></div>
-      <div class="tv-inner">
+      <div class="tv-head">
+        <div class="tv-title">費城半導體 SOX</div>
+        <div class="badge badge-y">領先指標</div>
+      </div>
+      <div class="tv-sm">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -210,10 +210,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         </div>
       </div>
     </div>
-
     <div class="tv-wrap">
-      <div class="tv-head"><div class="tv-title">那指期貨 NQ1!</div><div class="tv-badge warn">台股領先</div></div>
-      <div class="tv-inner">
+      <div class="tv-head">
+        <div class="tv-title">那指期貨 NQ1!</div>
+        <div class="badge badge-y">台股領先</div>
+      </div>
+      <div class="tv-sm">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -222,12 +224,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="g2">
     <div class="tv-wrap">
-      <div class="tv-head"><div class="tv-title">台積電 ADR (TSM)</div><div class="tv-badge blue">核心</div></div>
-      <div class="tv-inner">
+      <div class="tv-head">
+        <div class="tv-title">台積電 ADR (TSM)</div>
+        <div class="badge badge-b">核心</div>
+      </div>
+      <div class="tv-sm">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -236,10 +238,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
         </div>
       </div>
     </div>
-
     <div class="tv-wrap">
-      <div class="tv-head"><div class="tv-title">那斯達克 100</div><div class="tv-badge blue">泡沫雷達</div></div>
-      <div class="tv-inner">
+      <div class="tv-head">
+        <div class="tv-title">那斯達克 100</div>
+        <div class="badge badge-b">泡沫雷達</div>
+      </div>
+      <div class="tv-sm">
         <div class="tradingview-widget-container" style="height:100%">
           <div class="tradingview-widget-container__widget" style="height:100%"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -250,32 +254,29 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
     </div>
   </div>
 
-  <div class="alert blue show">
+  <div class="alert alert-b">
     <div class="alert-ico">⚡</div>
-    <div class="alert-txt"><strong>閱讀邏輯：</strong>跑馬燈先掃方向 → 費半跌 &gt;3% 注意台股開盤壓力 → 那指期貨若正值留意「開低走高」→「走勢圖」頁看週線月線趨勢。</div>
+    <div class="alert-txt"><strong>閱讀邏輯：</strong>跑馬燈先掃大方向 → 費半跌 &gt;3% 注意台股開盤壓力 → 那指期貨若正值留意「開低走高」→ 點台股卡片開 Yahoo 確認大盤 → 切「走勢圖」看週線月線趨勢。</div>
   </div>
+
 </div>
 
-<!-- ══════════════════════════════
-     TAB 2｜走勢圖
-══════════════════════════════ -->
+<!-- ══════════════════ TAB 2｜走勢圖 ══════════════════ -->
 <div class="panel" id="panel-chart">
 
-  <!-- 切換標的 -->
-  <div class="chart-controls">
-    <span class="chart-title">選擇標的與週期</span>
-    <div class="period-btns">
-      <button class="period-btn active" onclick="setChart('NASDAQ:SOX','1W','週線')">週線</button>
-      <button class="period-btn" onclick="setChart('NASDAQ:SOX','1M','月線')">月線</button>
-      <button class="period-btn" onclick="setChart('NASDAQ:SOX','3M','季線')">季線</button>
-      <button class="period-btn" onclick="setChart('NASDAQ:SOX','12M','年線')">年線</button>
+  <div class="chart-bar">
+    <span class="chart-bar-title" id="chartLabel">費城半導體 SOX</span>
+    <div class="btn-row">
+      <button class="ctrl-btn active" onclick="setPeriod(this,'W')">週線</button>
+      <button class="ctrl-btn" onclick="setPeriod(this,'M')">月線</button>
+      <button class="ctrl-btn" onclick="setPeriod(this,'3M')">季線</button>
+      <button class="ctrl-btn" onclick="setPeriod(this,'12M')">年線</button>
     </div>
   </div>
 
-  <!-- 主圖表：TradingView Advanced Chart -->
-  <div class="tv-wrap" style="margin-bottom:14px">
-    <div class="tv-inner xl" id="mainChartInner">
-      <div class="tradingview-widget-container" style="height:100%;width:100%" id="mainChartContainer">
+  <div class="tv-wrap" style="margin-bottom:12px">
+    <div class="tv-lg" id="mainChartWrap">
+      <div class="tradingview-widget-container" style="height:100%;width:100%" id="mainChart">
         <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
         {
@@ -286,13 +287,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
           "theme": "dark",
           "style": "1",
           "locale": "zh_TW",
-          "backgroundColor": "rgba(15, 18, 23, 1)",
-          "gridColor": "rgba(30, 37, 53, 1)",
+          "backgroundColor": "rgba(15,18,23,1)",
+          "gridColor": "rgba(30,37,53,1)",
           "hide_top_toolbar": false,
-          "hide_legend": false,
           "save_image": false,
           "calendar": false,
-          "hide_volume": false,
           "support_host": "https://www.tradingview.com"
         }
         </script>
@@ -300,55 +299,64 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
     </div>
   </div>
 
-  <!-- 標的選擇 -->
   <div class="sec"><span>切換追蹤標的</span></div>
   <div class="g3" style="margin-bottom:14px">
-    <button class="period-btn active" id="sym-sox" onclick="selectSym('NASDAQ:SOX','費城半導體 SOX','sym-sox')">費城半導體</button>
-    <button class="period-btn" id="sym-nq" onclick="selectSym('CME_MINI:NQ1!','那指期貨 NQ1!','sym-nq')">那指期貨</button>
-    <button class="period-btn" id="sym-ndx" onclick="selectSym('NASDAQ:NDX','那斯達克100','sym-ndx')">那斯達克100</button>
-    <button class="period-btn" id="sym-tsm" onclick="selectSym('NYSE:TSM','台積電ADR TSM','sym-tsm')">台積電 ADR</button>
-    <button class="period-btn" id="sym-ewt" onclick="selectSym('NYSE:EWT','台股ETF EWT','sym-ewt')">台股 EWT</button>
-    <button class="period-btn" id="sym-spx" onclick="selectSym('SP:SPX','S&P500','sym-spx')">S&P 500</button>
+    <button class="ctrl-btn active" id="sym-sox" onclick="selectSym(this,'NASDAQ:SOX','費城半導體 SOX')">費城半導體</button>
+    <button class="ctrl-btn" id="sym-nq" onclick="selectSym(this,'CME_MINI:NQ1!','那指期貨 NQ1!')">那指期貨</button>
+    <button class="ctrl-btn" id="sym-ndx" onclick="selectSym(this,'NASDAQ:NDX','那斯達克100')">那斯達克100</button>
+    <button class="ctrl-btn" id="sym-tsm" onclick="selectSym(this,'NYSE:TSM','台積電 ADR TSM')">台積電 ADR</button>
+    <button class="ctrl-btn" id="sym-ewt" onclick="selectSym(this,'NYSE:EWT','台股ETF EWT')">台股 EWT</button>
+    <button class="ctrl-btn" id="sym-spx" onclick="selectSym(this,'SP:SPX','S&amp;P 500')">S&amp;P 500</button>
   </div>
 
-  <!-- 台股走勢：快速連結 -->
   <div class="sec"><span>台股走勢（點擊開新分頁）</span></div>
   <div class="tw-grid">
     <a class="tw-card" href="https://finance.yahoo.com/quote/%5ETWII/chart/" target="_blank">
-      <div class="tw-card-top"><div class="tw-card-name">台灣加權 ^TWII</div><div class="tv-badge live">↗ Yahoo</div></div>
-      <div class="tw-card-code">週 / 月 / 年線</div>
-      <div class="tw-card-desc">點擊後在 Yahoo Finance 圖表右上角切換週期</div>
+      <div class="tw-card-top">
+        <div class="tw-card-name">台灣加權 ^TWII</div>
+        <div class="badge badge-g">↗ 週/月/年線</div>
+      </div>
+      <div class="tw-code">Yahoo Finance</div>
+      <div class="tw-desc">開啟後右上角切換週期：1W / 1M / 6M / 1Y</div>
     </a>
     <a class="tw-card" href="https://finance.yahoo.com/quote/%5ETPEX/chart/" target="_blank">
-      <div class="tw-card-top"><div class="tw-card-name">台灣櫃買 ^TPEX</div><div class="tv-badge live">↗ Yahoo</div></div>
-      <div class="tw-card-code">週 / 月 / 年線</div>
-      <div class="tw-card-desc">中小型股同步創高，觀察與加權的背離</div>
+      <div class="tw-card-top">
+        <div class="tw-card-name">台灣櫃買 ^TPEX</div>
+        <div class="badge badge-g">↗ 週/月/年線</div>
+      </div>
+      <div class="tw-code">Yahoo Finance</div>
+      <div class="tw-desc">開啟後右上角切換週期：1W / 1M / 6M / 1Y</div>
     </a>
   </div>
 
-  <div class="alert blue show" style="margin-top:4px">
+  <div class="alert alert-b">
     <div class="alert-ico">💡</div>
-    <div class="alert-txt"><strong>使用說明：</strong>上方大圖切換美股週線／月線／季線，標的按鈕可換費半、那指期貨、台積電 ADR 等。台股請點上方連結卡開 Yahoo Finance，在圖表右上角選 1W、1M、6M 切換週期。</div>
+    <div class="alert-txt"><strong>使用說明：</strong>上方大圖切換美股週線／月線／季線，標的按鈕可換費半、那指期貨、台積電 ADR 等。台股請點連結卡開 Yahoo Finance，圖表右上角選時間週期。</div>
   </div>
+
 </div>
 
-<!-- ══════════════════════════════
-     TAB 3｜分析框架
-══════════════════════════════ -->
-<div class="panel" id="panel-weekly">
+<!-- ══════════════════ TAB 3｜分析框架 ══════════════════ -->
+<div class="panel" id="panel-fw">
 
-  <div class="alert blue show" style="margin-bottom:14px">
+  <div class="alert alert-b" style="margin-bottom:14px">
     <div class="alert-ico">🧭</div>
-    <div class="alert-txt">解讀每日數字的長期思考框架。建議週末展開回顧，校準對市場走向的判斷。</div>
+    <div class="alert-txt">解讀每日數字的長期思考框架，建議週末展開回顧，校準對市場走向的判斷。</div>
   </div>
 
   <div class="fw">
     <div class="fw-hd" onclick="toggleFw(this)">
-      <div class="fw-l"><div class="fw-ico b">🏭</div><div><div class="fw-title">AI 供應鏈質變 × 均值回歸延遲</div><div class="fw-sub">本益比 / 台積電護城河 / 結構性多頭</div></div></div>
+      <div class="fw-l">
+        <div class="fw-ico fw-ico-b">🏭</div>
+        <div>
+          <div class="fw-title">AI 供應鏈質變 × 均值回歸延遲</div>
+          <div class="fw-sub">本益比 / 台積電護城河 / 結構性多頭</div>
+        </div>
+      </div>
       <div class="fw-tog">+</div>
     </div>
     <div class="fw-bd">
-      <span class="bdg a">● 結構性多頭持續中</span>
+      <span class="bdg bdg-g">● 結構性多頭持續中</span>
       <p>台股已從代工毛利模式轉變為全球最具獨占性的 AI 供應鏈，以台積電為核心。AI 算力需求龐大且尚未被滿足，企業獲利暴增，傳統「均值回歸」鐵律暫時失靈，本益比被推升至近 30 倍歷史極端值。</p>
       <p>⚠️ <strong>觀察指標：</strong>本益比是否開始壓縮。若壓縮，代表市場重新定價均值回歸風險。老手踏空成本每天都在升高，但多頭不代表永遠不止。</p>
     </div>
@@ -356,11 +364,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 
   <div class="fw">
     <div class="fw-hd" onclick="toggleFw(this)">
-      <div class="fw-l"><div class="fw-ico g">📊</div><div><div class="fw-title">ETF 狂熱 × 資金流動結構</div><div class="fw-sub">0050 / 散戶定期定額 / 嘎空手效應</div></div></div>
+      <div class="fw-l">
+        <div class="fw-ico fw-ico-g">📊</div>
+        <div>
+          <div class="fw-title">ETF 狂熱 × 資金流動結構</div>
+          <div class="fw-sub">0050 / 散戶定期定額 / 嘎空手效應</div>
+        </div>
+      </div>
       <div class="fw-tog">+</div>
     </div>
     <div class="fw-bd">
-      <span class="bdg a">● 買盤結構穩固</span>
+      <span class="bdg bdg-g">● 買盤結構穩固</span>
       <p>房地產利潤受政策壓縮，資金大量流入股市。散戶透過定期定額與逢低買 ETF，形成強大持續性買盤，是「嘎空手」最強推手。</p>
       <p>⚠️ <strong>觀察指標：</strong>ETF 申購贖回量。若出現大量贖回，是情緒反轉訊號。越多人不懂技術分析卻在賺錢，正向回饋越強，但頂部訊號也越難識別。</p>
     </div>
@@ -368,11 +382,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 
   <div class="fw">
     <div class="fw-hd" onclick="toggleFw(this)">
-      <div class="fw-l"><div class="fw-ico y">🧠</div><div><div class="fw-title">散戶 FOMO × 老手踏空心理戰</div><div class="fw-sub">風險認知 / 歷史包袱 / 行為偏誤</div></div></div>
+      <div class="fw-l">
+        <div class="fw-ico fw-ico-y">🧠</div>
+        <div>
+          <div class="fw-title">散戶 FOMO × 老手踏空心理戰</div>
+          <div class="fw-sub">風險認知 / 歷史包袱 / 行為偏誤</div>
+        </div>
+      </div>
       <div class="fw-tog">+</div>
     </div>
     <div class="fw-bd">
-      <span class="bdg w">⚡ 情緒持續分歧</span>
+      <span class="bdg bdg-y">⚡ 情緒持續分歧</span>
       <p>懂歷史的老手設有停損與等回檔機制，反而在這波不回頭的多頭中完美錯失。不懂技術分析的年輕散戶無懼風險逢低就買，反而賺得最多。</p>
       <p>⚠️ <strong>自我校準：</strong>你現在是「理性踏空者」還是「適度參與者」？當 FOMO 散戶開始大量虧損時，才是真正的轉折訊號。</p>
     </div>
@@ -380,84 +400,114 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 
   <div class="fw">
     <div class="fw-hd" onclick="toggleFw(this)">
-      <div class="fw-l"><div class="fw-ico r">🌡️</div><div><div class="fw-title">美股極度貪婪 × 泡沫風險雷達</div><div class="fw-sub">SpaceX / xAI / 那斯達克 vs 2000年</div></div></div>
+      <div class="fw-l">
+        <div class="fw-ico fw-ico-r">🌡️</div>
+        <div>
+          <div class="fw-title">美股極度貪婪 × 泡沫風險雷達</div>
+          <div class="fw-sub">SpaceX / xAI / 那斯達克 vs 2000年</div>
+        </div>
+      </div>
       <div class="fw-tog">+</div>
     </div>
     <div class="fw-bd">
-      <span class="bdg r">🔴 持續監控中</span>
+      <span class="bdg bdg-r">🔴 持續監控中</span>
       <p>SpaceX 突破兩兆美元市值，市場對「火星移民」與 AI 夢想的瘋狂定價，令人聯想到 2000 年達康泡沫——那斯達克當時最終暴跌 78%。</p>
       <p>⚠️ <strong>觀察指標：</strong>費半單日跌幅 &gt;3%（警戒）、&gt;5%（極端）為最直接的台股前兆。Starlink 實際有獲利，但造火箭與 AI 算力仍燒錢——需區分夢想定價與基本面。</p>
     </div>
   </div>
 
-  <!-- 費半 vs 那指長期比較 -->
-  <div class="sec"><span>費半 vs 那指 — 6個月走勢對比</span></div>
+  <div class="sec"><span>費半 vs 那指 vs 台積電 — 6個月走勢對比</span></div>
   <div class="tv-wrap">
-    <div class="tv-inner md">
+    <div class="tv-md">
       <div class="tradingview-widget-container" style="height:100%">
         <div class="tradingview-widget-container__widget" style="height:100%"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-        {"symbols":[["費城半導體","NASDAQ:SOX|6M"],["那斯達克100","NASDAQ:NDX|6M"],["台積電ADR","NYSE:TSM|6M"]],"chartOnly":false,"width":"100%","height":"100%","locale":"zh_TW","colorTheme":"dark","isTransparent":true,"showVolume":false,"chartType":"area","autosize":true}
+        {
+          "symbols": [
+            ["費城半導體","NASDAQ:SOX|6M"],
+            ["那斯達克100","NASDAQ:NDX|6M"],
+            ["台積電ADR","NYSE:TSM|6M"]
+          ],
+          "chartOnly": false,
+          "width": "100%",
+          "height": "100%",
+          "locale": "zh_TW",
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "showVolume": false,
+          "chartType": "area",
+          "autosize": true
+        }
         </script>
       </div>
     </div>
   </div>
+
 </div>
 
 <div class="footer">
-  台股 AI 供應鏈追蹤 · 美股數據：TradingView（延遲 15 分鐘）· 台股數據：Yahoo Finance<br>
+  台股 AI 供應鏈追蹤 · 美股：TradingView（延遲 15 分鐘）· 台股：Yahoo Finance<br>
   僅供研究參考，不構成投資建議
 </div>
 
 <script>
-// Date
 (function(){
-  const now=new Date(),d=['日','一','二','三','四','五','六'];
-  document.getElementById('hdrDate').textContent=
-    `${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')} 週${d[now.getDay()]}`;
+  var now = new Date();
+  var d = ['日','一','二','三','四','五','六'];
+  document.getElementById('hdrDate').textContent =
+    now.getFullYear() + '/' +
+    String(now.getMonth()+1).padStart(2,'0') + '/' +
+    String(now.getDate()).padStart(2,'0') + ' 週' + d[now.getDay()];
 })();
 
-// Tabs
-function switchTab(n){
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['daily','chart','weekly'][i]===n));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+function switchTab(n) {
+  var names = ['daily','chart','fw'];
+  document.querySelectorAll('.tab').forEach(function(t,i){
+    t.classList.toggle('active', names[i] === n);
+  });
+  document.querySelectorAll('.panel').forEach(function(p){
+    p.classList.remove('active');
+  });
   document.getElementById('panel-'+n).classList.add('active');
 }
 
-// Accordion
-function toggleFw(h){
-  const b=h.nextElementSibling,t=h.querySelector('.fw-tog'),o=b.classList.contains('open');
-  b.classList.toggle('open',!o);t.classList.toggle('open',!o);
+function toggleFw(h) {
+  var b = h.nextElementSibling;
+  var t = h.querySelector('.fw-tog');
+  var o = b.classList.contains('open');
+  b.classList.toggle('open', !o);
+  t.classList.toggle('open', !o);
 }
 
-// Chart period & symbol state
-let currentSym = 'NASDAQ:SOX';
-let currentInterval = 'W';
+var currentSym = 'NASDAQ:SOX';
+var currentInterval = 'W';
 
-const intervalMap = { '1W':'W', '1M':'M', '3M':'3M', '12M':'12M' };
-
-function setChart(sym, interval, label) {
-  currentInterval = intervalMap[interval] || interval;
-  document.querySelectorAll('.chart-controls .period-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent.trim() === label)
-  );
+function setPeriod(btn, interval) {
+  currentInterval = interval;
+  document.querySelectorAll('.chart-bar .ctrl-btn').forEach(function(b){
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
   reloadChart();
 }
 
-function selectSym(sym, title, btnId) {
+function selectSym(btn, sym, label) {
   currentSym = sym;
-  document.querySelectorAll('.g3 .period-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(btnId).classList.add('active');
+  document.getElementById('chartLabel').textContent = label;
+  document.querySelectorAll('.g3 .ctrl-btn').forEach(function(b){
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
   reloadChart();
 }
 
 function reloadChart() {
-  const container = document.getElementById('mainChartContainer');
-  container.innerHTML = '<div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>';
-  const script = document.createElement('script');
-  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-  script.async = true;
-  script.textContent = JSON.stringify({
+  var c = document.getElementById('mainChart');
+  c.innerHTML = '<div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>';
+  var s = document.createElement('script');
+  s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+  s.async = true;
+  s.textContent = JSON.stringify({
     autosize: true,
     symbol: currentSym,
     interval: currentInterval,
@@ -465,15 +515,14 @@ function reloadChart() {
     theme: 'dark',
     style: '1',
     locale: 'zh_TW',
-    backgroundColor: 'rgba(15, 18, 23, 1)',
-    gridColor: 'rgba(30, 37, 53, 1)',
+    backgroundColor: 'rgba(15,18,23,1)',
+    gridColor: 'rgba(30,37,53,1)',
     hide_top_toolbar: false,
-    hide_legend: false,
     save_image: false,
     calendar: false,
     support_host: 'https://www.tradingview.com'
   });
-  container.appendChild(script);
+  c.appendChild(s);
 }
 </script>
 </body>
